@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-3">
+      <input type="checkbox" [(ngModel)]="isShowText">Show Textbox
+    </div>
+  @if (isShowText){
+    <div class="col-md-3">
+      <input type="text">
+    </div>
+  }
+</div>
+
+<div class="row">
+  <button (click)="ToggleLabelVisibility()">Toggle</button>
+</div>
+<div class="row">
+  @if (showSuccessLabel()) {
+    <label class="label-success">success</label>
+  } @else {
+    <label class="label-danger">error</label>
+  }
+</div>
+
+<div class="row">
+  <input type="number" [(ngModel)]="age">
+</div>
+
+<div class="row">
+
+  @if (age < 18) {
+    <span>Child</span>
+  }
+  @else if (age > 60) {
+    <span>Old</span>
+  }@else
+  {
+    <span>Young</span>
+  }
+</div>
+
+<br>
+<br>
+<br>
+<div class="row">
+  <ul>
+    @for(item of courses; track $index)
+    {
+      <li>{{item}}</li>
+    }
+  </ul>
+</div>
+
+<br>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Id</th>
+    <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(dept of deptList; track $index)
+    {
+    <tr>
+      <td>{{dept.id}}</td>
+      <td>{{dept.name}}</td>
+    </tr>
+    }
+  </tbody>
+</table>
