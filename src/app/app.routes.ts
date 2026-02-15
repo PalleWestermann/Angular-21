@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AddEmployee } from './pages/add-employee/add-employee';
 import { DataBinding } from './pages/data-binding/data-binding';
 import { EmployeeList } from './pages/employee-list/employee-list';
+import { NotFound } from './pages/not-found/not-found';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path:'employee-list',
     component: EmployeeList
+  },
+  {
+    path: '**',
+    component: NotFound
   }
 
 ];
