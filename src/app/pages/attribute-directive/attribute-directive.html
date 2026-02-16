@@ -1,0 +1,23 @@
+<div [ngClass]="myClass">Div 1</div>
+
+<button class="btn" [ngClass]="isActive ? 'btn-success' : 'btn-danger'" (click)="toggleActivation()">Active</button>
+
+<div class="row">
+  <input type="number" [(ngModel)]="marks">
+</div>
+
+<div class="row">
+  <p [ngClass]="marks > 50 ? 'text-primary' : 'text-danger'">Marks: {{marks}}</p>
+</div>
+
+<div class="row">
+  <input type="" [(ngModel)]="backColor">
+</div>
+
+<div [ngStyle]="{'background-color' : backColor}">
+  Div 2
+</div>
+
+<div [ngStyle]="myCss">
+  Div 3
+</div>
