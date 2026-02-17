@@ -6,6 +6,7 @@ import { NotFound } from './pages/not-found/not-found';
 import { Signals } from './pages/signals/signals';
 import { ControlFlow } from './pages/control-flow/control-flow';
 import { AttributeDirective } from './pages/attribute-directive/attribute-directive';
+import { TemplateForm } from './pages/template-form/template-form';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {
     path:'attribute-directive',
     component: AttributeDirective
+  },
+  {
+    path:'template-form',
+    component: TemplateForm
   },
   {
     path:'signals',
