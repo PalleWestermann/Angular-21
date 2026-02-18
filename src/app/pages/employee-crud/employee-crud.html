@@ -1,0 +1,147 @@
+<div class="container-fluid py-4">
+  <div class="row g-4">
+
+    <!-- LEFT COLUMN: Employee Table -->
+    <div class="col-lg-7">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Employee List</h5>
+          <button class="btn btn-light btn-sm">
+            <i class="bi bi-plus-circle"></i> Add Employee
+          </button>
+        </div>
+
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover table-striped mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Angular Example -->
+                 @for(emp of employees(); track $index)
+                 {
+                <tr >
+                  <td>{{ emp.id }}</td>
+                  <td>{{ emp.name }}</td>
+                  <td>{{ emp.department }}</td>
+                  <td class="text-center">
+                    <button (click)="onEditEmployee(emp)" class="btn btn-sm btn-warning me-2">
+                      Edit
+                    </button>
+                    <button (click)="onDeleteEmployee(emp.id)" class="btn btn-sm btn-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+                }
+
+                <!-- Empty State -->
+                 @if (employees?.length === 0)
+                 {
+                   <tr>
+                     <td colspan="4" class="text-center text-muted py-3">
+                       No employees found.
+                     </td>
+                   </tr>
+                 }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- RIGHT COLUMN: Employee Form -->
+    <div class="col-lg-5">
+      <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0">Add/Edit Employee</h5>
+        </div>
+
+        <div class="card-body">
+          <form #employeeForm="ngForm">
+
+            <!-- ID -->
+            <!-- <div class="mb-3">
+              <label for="id" class="form-label">Employee ID</label>
+              <input
+                type="number"
+                id="id"
+                name="id"
+                class="form-control"
+                [(ngModel)]="empObj.id"
+                required
+              /> -->
+            <!-- </div> -->
+
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Employee Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                [(ngModel)]="empObj.name"
+                required
+              />
+            </div>
+
+            <!-- Department -->
+            <div class="mb-3">
+              <label for="department" class="form-label">Department</label>
+              <input
+                type="text"
+                id="department"
+                name="department"
+                class="form-control"
+                [(ngModel)]="empObj.department"
+                required
+              />
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="d-flex justify-content-between">
+               @if(empObj.id == 0) {
+                 <button (click)="onSaveEmployee()"
+                   type="submit"
+                   class="btn btn-success"
+                   [disabled]="employeeForm.invalid"
+                 >
+                   Save
+                 </button>
+                }
+                @else {
+                  <button (click)="onUpdateEmployee()"
+                    type="submit"
+                    class="btn btn-success"
+                    [disabled]="employeeForm.invalid"
+                  >
+                    Update
+                  </button>
+                }
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+              >
+                Reset
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
