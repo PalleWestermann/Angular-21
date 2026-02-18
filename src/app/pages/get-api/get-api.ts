@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-get-api',
@@ -10,16 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class GetApi implements OnInit{
 
   todoList: any[] = [];
+  todoService = inject(TodoService)
   constructor(private http: HttpClient) {
-
+    const res = this.todoService.concatStrings("Angular", "Tutorials");
   }
   ngOnInit(): void {
     this.getTodos();
   }
 
   getTodos() {
-    this.http.get("https://jsonplaceholder.typicode.com/todos").subscribe((result : any) => {
-      this.todoList = result;
+    this.todoService.getTodos().subscribe({
+      next: (result: any) => {
+        this.todoList = result;
+      }
     });
   }
 }
