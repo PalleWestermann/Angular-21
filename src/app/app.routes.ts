@@ -14,14 +14,24 @@ import { LifeCycle } from './pages/life-cycle/life-cycle';
 import { GetApi } from './pages/get-api/get-api';
 import { ServiceTest } from './pages/service-test/service-test';
 import { EmployeeCrud } from './pages/employee-crud/employee-crud';
+import { Login } from './pages/login/login';
+import { Layout } from './pages/layout/layout';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'data-binding',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
+    path:'login',
+    component: Login
+  },
+  {
+    path:'layout',
+    component: Layout,
+    children: [
+      {
     path:'add-employee',
     component: AddEmployee
   },
@@ -77,6 +87,9 @@ export const routes: Routes = [
     path:'signals',
     component: Signals
   },
+    ]
+  },
+
   {
     path: '**',
     component: NotFound

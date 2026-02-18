@@ -1,0 +1,73 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light">
+  <div class="card shadow-lg border-0" style="width: 100%; max-width: 420px;">
+    <div class="card-body p-4 p-md-5">
+
+      <div class="text-center mb-4">
+        <h3 class="fw-bold">Login</h3>
+        <p class="text-muted small">Sign in to your account</p>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+        <!-- Email -->
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            [(ngModel)]="userObj.email"
+            required
+            email
+            placeholder="name@example.com">
+          <label for="email">Email address</label>
+        </div>
+
+        <!-- Password -->
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            [(ngModel)]="userObj.password"
+            required
+            minlength="6"
+            placeholder="Password">
+          <label for="password">Password</label>
+        </div>
+
+        <!-- Remember me -->
+        <div class="form-check mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="rememberMe"
+            name="rememberMe"
+            [(ngModel)]="userObj.rememberMe">
+          <label class="form-check-label" for="rememberMe">
+            Remember me
+          </label>
+        </div>
+
+        <!-- Submit button -->
+        <div class="d-grid">
+          <button
+            type="submit"
+            (click)="onLoginUser()"
+            class="btn btn-primary btn-lg"
+            [disabled]="!loginForm.valid">
+            Sign In
+          </button>
+        </div>
+
+        <!-- Extra links -->
+        <div class="text-center mt-4">
+          <a href="#" class="text-decoration-none small">Forgot password?</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
