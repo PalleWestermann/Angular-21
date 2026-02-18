@@ -16,6 +16,7 @@ import { ServiceTest } from './pages/service-test/service-test';
 import { EmployeeCrud } from './pages/employee-crud/employee-crud';
 import { Login } from './pages/login/login';
 import { Layout } from './pages/layout/layout';
+import { authGuard } from './guard/auth-guard';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,7 @@ export const routes: Routes = [
   {
     path:'layout',
     component: Layout,
+        canActivate: [authGuard],
     children: [
       {
     path:'add-employee',
